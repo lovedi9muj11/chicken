@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,14 +12,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.xunxas.chicken.model.Model;
+import com.xunxas.chicken.service.ChickenService;
 
 @RestController
 public class ModelController {
 	
+	@Autowired ChickenService chickenService;
+	
 	@RequestMapping(value = "/getStringMethod", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
 	public String getStringMethod(){
-		
+		Model xxx = chickenService.findCust();
 		return "Get xxx";
 	}
 	
